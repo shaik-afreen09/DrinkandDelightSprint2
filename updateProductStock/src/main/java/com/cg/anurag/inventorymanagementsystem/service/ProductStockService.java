@@ -23,7 +23,7 @@ public class ProductStockService {
 			 productStock2.setQualityCheck(productStock.getQualityCheck());
 			 return " Updated Stock Sucessfully";
 		 }
-		 return "Updation Failed";
+		 return null;
 	    }
 
 	 

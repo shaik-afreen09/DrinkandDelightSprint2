@@ -28,7 +28,7 @@ try
 }
 	catch(Exception ex)
 {
-		return "user not exist";
+		return null;
 	}
 	if(!admin.getPassword().equals(admin1.password))
 	{

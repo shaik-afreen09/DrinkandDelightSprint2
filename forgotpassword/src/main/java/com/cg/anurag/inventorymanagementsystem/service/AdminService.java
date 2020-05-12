@@ -27,7 +27,7 @@ try {
 	admin1 = psdao.findByUsername(admin.getUsername());
 }catch(Exception ex)
 {
-	return "User Does Not Exist";
+	return null;
 	}
 	
 		admin1.setPassword(admin.getPassword());

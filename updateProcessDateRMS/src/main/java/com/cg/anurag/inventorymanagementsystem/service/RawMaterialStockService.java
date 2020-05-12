@@ -20,7 +20,7 @@ public class RawMaterialStockService {
 	    	  rawMaterialStock1.setProcessDate(rawMaterialStock.getProcessDate());
 	    	  return "Process Date Modified";
 	    	}
-	    	return "Updation Failed";
+	    	return null;
 	    }
 	 
 

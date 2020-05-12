@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.anurag.inventorymanagementsystem.dto.ProductStock;
+import com.cg.anurag.inventorymanagementsystem.exception.NotFoundOperation;
 import com.cg.anurag.inventorymanagementsystem.service.ProductStockService;
 
 import brave.sampler.Sampler;
@@ -28,7 +29,7 @@ public class ProductStockController
 		return Sampler.ALWAYS_SAMPLE;
 	}
    @GetMapping("productstock/getOrder/{orderId}")
-   public ProductStock getOrder(@PathVariable int orderId)
+   public ProductStock getOrder(@PathVariable int orderId) throws NotFoundOperation
    {
 	   return productStockService.getOrder(orderId);
    }

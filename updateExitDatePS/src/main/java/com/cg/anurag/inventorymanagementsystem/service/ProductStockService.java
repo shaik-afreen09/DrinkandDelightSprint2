@@ -21,7 +21,7 @@ public class ProductStockService {
 	    	  productStock1.setExitDate(productStock.getExitDate());
 	    	  return "Exit Date Modified";
 	    	}
-	    	return "Updation Failed";
+	    	return null;
 	    }
 	 
 

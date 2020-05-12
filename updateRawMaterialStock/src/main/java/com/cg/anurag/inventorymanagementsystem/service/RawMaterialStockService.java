@@ -21,7 +21,7 @@ public class RawMaterialStockService {
 	    	  rawMaterialStock1.setQualityCheck(rawMaterialStock.getQualityCheck());
 	    	  return "Updated Stock Sucessfully";
 	    	}
-	    	return "Updation Failed";
+	    	return null;
 	}
 
 }
