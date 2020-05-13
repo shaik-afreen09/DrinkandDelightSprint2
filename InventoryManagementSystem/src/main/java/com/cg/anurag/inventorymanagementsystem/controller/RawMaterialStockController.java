@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,10 +31,10 @@ public class RawMaterialStockController {
 			this.rawMaterialStockService=rawMaterialStockService;
 		}
 		
-	   @GetMapping("rawmaterial/getOrder/{orderId}")
-	   public ResponseEntity<RawMaterialStock> getOrder(@PathVariable int orderId) throws NotFoundException
+	   @PostMapping("rawmaterial/getOrder")
+	   public ResponseEntity<RawMaterialStock> getOrder(@RequestBody RawMaterialStock rms) throws NotFoundException
 	   {
-		   RawMaterialStock ps= rawMaterialStockService.getOrder(orderId);
+		   RawMaterialStock ps= rawMaterialStockService.getOrder(rms.getOrderId());
 		   if(ps!=null)
 				return	new ResponseEntity<RawMaterialStock>(ps, HttpStatus.OK);
 			else
