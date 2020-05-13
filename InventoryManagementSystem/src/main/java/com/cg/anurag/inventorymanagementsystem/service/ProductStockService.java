@@ -32,6 +32,20 @@ public class ProductStockService {
 			return psdao.findAll();
 				
 			}
+	@Transactional
+	public ProductStock createOrder(ProductStock product)
+	{
+		
+		return	psdao.save(product);
+			
+		
+		
+		
+		
+		
+		
+	}
+	
 	 @Transactional
 	    public String updateExitDate(ProductStock productStock)
 	    {

@@ -29,7 +29,18 @@ public class ProductStockController
 	{
 		this.productStockService=productStockService;
 	}
-	//nullcheck 
+	
+	@PostMapping("productstock/createproductorder")
+	   public ResponseEntity<ProductStock> createOrder(@RequestBody ProductStock product) throws NotFoundException
+	   {
+		   ProductStock ps=productStockService.createOrder(product);
+		   
+		   if(ps!=null)
+				return	new ResponseEntity<ProductStock>(ps, HttpStatus.OK);
+			else
+			    throw new NotFoundOperation("Not Created");
+	   }
+	 
    @PostMapping("productstock/getOrder")
    public ResponseEntity<ProductStock> getOrder(@RequestBody ProductStock product) throws NotFoundException
    {

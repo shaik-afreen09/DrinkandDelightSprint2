@@ -14,9 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="productstock")
 public class ProductStock {	
+	//select * from user_sequences; use this query to find sequence name if any issues
 	@Id
 	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "o_id")
-	 @SequenceGenerator(name="o_id", sequenceName = "od10", allocationSize=10)
+	 @SequenceGenerator(name="o_id", sequenceName = "oid10", allocationSize=10)
 	 @Column(name="orderid")
 	 int orderId;
 	 @Column(name="name")

@@ -12,11 +12,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="rawmaterialstock")
 public class RawMaterialStock {
-	 @Id	
-	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id")
-	 @SequenceGenerator(name="order_id", sequenceName = "oId", allocationSize=10)
-	   @Column(name="orderid")
-	   int orderId;
+	 //select * from user_sequences; use this query to find sequence name if any issues
+	@Id	
+	 @SequenceGenerator(name="orderid", sequenceName = "oid", allocationSize=10)
+	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orderid")
+	 @Column(name="orderid")
+	 int orderId;
 	 @Column(name="name")
 	 String Name;
 	 @Column(name="price_per_unit")
@@ -27,8 +28,8 @@ public class RawMaterialStock {
 	 int quantityUnit;
 	 @Column(name="price")
 	 double price;
-	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "w_id")
-	 @SequenceGenerator(name="w_id", sequenceName = "wid1", allocationSize=10)
+	 @GeneratedValue(strategy = GenerationType.AUTO, generator = "warehouseid")
+	 @SequenceGenerator(name="warehouseid", sequenceName = "wid1", allocationSize=10)
 	 @Column(name="warehouseid")
 	 String warehouseId;
 	 @Column(name="deliverydate")

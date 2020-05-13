@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.cg.anurag.inventorymanagementsystem.dao.RawMaterialStockDAO;
-
+import com.cg.anurag.inventorymanagementsystem.dto.ProductStock;
 import com.cg.anurag.inventorymanagementsystem.dto.RawMaterialStock;
 @Service
 public class RawMaterialStockService {
@@ -19,6 +19,19 @@ public class RawMaterialStockService {
 			return rmsdao.findById(orderId).get();
 				
 			}
+	@Transactional
+	public RawMaterialStock createOrder(RawMaterialStock product)
+	{
+		System.out.println(product.getName());
+		return	rmsdao.save(product);
+			
+		
+		
+		
+		
+		
+		
+	}
 	@Transactional(readOnly=true)
 	public List<RawMaterialStock> getallOrder() {
 		

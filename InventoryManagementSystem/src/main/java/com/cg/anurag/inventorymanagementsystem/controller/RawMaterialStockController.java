@@ -30,7 +30,16 @@ public class RawMaterialStockController {
 		{
 			this.rawMaterialStockService=rawMaterialStockService;
 		}
-		
+		@PostMapping("rawmaterial/createrawmaterialorder")
+		   public ResponseEntity<RawMaterialStock> createOrder(@RequestBody RawMaterialStock rms) throws NotFoundException
+		   {
+			RawMaterialStock ps=rawMaterialStockService.createOrder(rms);
+			   
+			   if(ps!=null)
+					return	new ResponseEntity<RawMaterialStock>(ps, HttpStatus.OK);
+				else
+				    throw new NotFoundOperation("Not Created");
+		   }
 	   @PostMapping("rawmaterial/getOrder")
 	   public ResponseEntity<RawMaterialStock> getOrder(@RequestBody RawMaterialStock rms) throws NotFoundException
 	   {
