@@ -1,5 +1,7 @@
 package com.cg.anurag.inventorymanagementsystem.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cg.anurag.inventorymanagementsystem.dao.ProductStockDAO;
 import com.cg.anurag.inventorymanagementsystem.dto.ProductStock;
+import com.cg.anurag.inventorymanagementsystem.dto.RawMaterialStock;
 
 import javassist.NotFoundException;
 @Service
@@ -23,6 +26,12 @@ public class ProductStockService {
 			return psdao.findById(orderId).get();
 		
 	}
+	@Transactional(readOnly=true)
+	public List<ProductStock> getallOrder() {
+		
+			return psdao.findAll();
+				
+			}
 	 @Transactional
 	    public String updateExitDate(ProductStock productStock)
 	    {

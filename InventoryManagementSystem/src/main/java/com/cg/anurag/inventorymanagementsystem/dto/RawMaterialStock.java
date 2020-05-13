@@ -3,13 +3,18 @@ package com.cg.anurag.inventorymanagementsystem.dto;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="rawmaterialstock")
 public class RawMaterialStock {
 	 @Id	
+	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id")
+	 @SequenceGenerator(name="order_id", sequenceName = "oId", allocationSize=10)
 	   @Column(name="orderid")
 	   int orderId;
 	 @Column(name="name")
@@ -22,6 +27,8 @@ public class RawMaterialStock {
 	 int quantityUnit;
 	 @Column(name="price")
 	 double price;
+	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "w_id")
+	 @SequenceGenerator(name="w_id", sequenceName = "wid1", allocationSize=10)
 	 @Column(name="warehouseid")
 	 String warehouseId;
 	 @Column(name="deliverydate")

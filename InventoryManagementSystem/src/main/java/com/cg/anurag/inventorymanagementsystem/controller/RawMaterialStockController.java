@@ -1,5 +1,7 @@
 package com.cg.anurag.inventorymanagementsystem.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +38,13 @@ public class RawMaterialStockController {
 				return	new ResponseEntity<RawMaterialStock>(ps, HttpStatus.OK);
 			else
 			    throw new NotFoundOperation("Not FOund");
+		   
+	   }
+	   @GetMapping("rawmaterial/getAll")
+	   public List<RawMaterialStock> getAll() throws NotFoundException
+	   {
+		   return rawMaterialStockService.getallOrder();
+		  
 		   
 	   }
 	   @PutMapping(value="rawmaterial/updateProcessDate",consumes="application/json")

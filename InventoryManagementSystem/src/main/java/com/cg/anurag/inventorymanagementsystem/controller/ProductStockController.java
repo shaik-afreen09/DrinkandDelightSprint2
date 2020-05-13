@@ -1,4 +1,6 @@
 package com.cg.anurag.inventorymanagementsystem.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.anurag.inventorymanagementsystem.dto.ProductStock;
+import com.cg.anurag.inventorymanagementsystem.dto.RawMaterialStock;
 import com.cg.anurag.inventorymanagementsystem.exception.NotFoundOperation;
 import com.cg.anurag.inventorymanagementsystem.service.ProductStockService;
 
@@ -44,6 +47,13 @@ public class ProductStockController
 			return	new ResponseEntity<String>(ps, HttpStatus.OK);
 		else
 		    throw new NotFoundOperation("Item Not Found");
+   }
+   @GetMapping("productstock/getAll")
+   public List<ProductStock> getAll() throws NotFoundException
+   {
+	   return productStockService.getallOrder();
+	  
+	   
    }
    @PutMapping(value="productstock/updateStock",consumes="application/json")
    public ResponseEntity<String> updateStock(@RequestBody()ProductStock productStock)
