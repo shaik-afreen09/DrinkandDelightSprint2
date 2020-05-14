@@ -29,37 +29,52 @@ public class ProductStockController
 	{
 		this.productStockService=productStockService;
 	}
-	
+	/*
+	 * 
+	 * 
+	 * It creates order using HTTP Post 
+	 */
 	@PostMapping("productstock/createproductorder")
 	   public ResponseEntity<ProductStock> createOrder(@RequestBody ProductStock product) throws NotFoundException
 	   {
-		   ProductStock ps=productStockService.createOrder(product);
+		   ProductStock productstock=productStockService.createOrder(product);
 		   
-		   if(ps!=null)
-				return	new ResponseEntity<ProductStock>(ps, HttpStatus.OK);
+		   if(productstock!=null)
+				return	new ResponseEntity<ProductStock>(productstock, HttpStatus.OK);
 			else
 			    throw new NotFoundOperation("Not Created");
 	   }
 	 
+	/*
+	 * It takes order id as input and fetchesentire order details
+	 */
    @PostMapping("productstock/getOrder")
    public ResponseEntity<ProductStock> getOrder(@RequestBody ProductStock product) throws NotFoundException
    {
-	   ProductStock ps=productStockService.getOrder(product.getOrderId());
+	   ProductStock productstock=productStockService.getOrder(product.getOrderId());
 	   
-	   if(ps!=null)
-			return	new ResponseEntity<ProductStock>(ps, HttpStatus.OK);
+	   if(productstock!=null)
+			return	new ResponseEntity<ProductStock>(productstock, HttpStatus.OK);
 		else
 		    throw new NotFoundOperation("Not FOund");
    }
+   /*
+    * 
+    * It takes Order ID and exit Date from front end as input and updates in DB
+    */
    @PutMapping(value="productstock/updateExitDate",consumes="application/json")
    public ResponseEntity<String> updateExitDate(@RequestBody()ProductStock productStock )
    {
-	   String ps=productStockService.updateExitDate(productStock);
-	   if(ps!=null)
-			return	new ResponseEntity<String>(ps, HttpStatus.OK);
+	   String message=productStockService.updateExitDate(productStock);
+	   if(message!=null)
+			return	new ResponseEntity<String>(message, HttpStatus.OK);
 		else
 		    throw new NotFoundOperation("Item Not Found");
    }
+   /*
+    * 
+    * Fetch all Orders in the DB
+    */
    @GetMapping("productstock/getAll")
    public List<ProductStock> getAll() throws NotFoundException
    {
@@ -67,12 +82,15 @@ public class ProductStockController
 	  
 	   
    }
+   /*
+    * Updates  Quality check, Manufacturing and Exit Date of Product
+    */
    @PutMapping(value="productstock/updateStock",consumes="application/json")
    public ResponseEntity<String> updateStock(@RequestBody()ProductStock productStock)
    {
-	  String ps=productStockService.updateStock(productStock);
-	  if(ps!=null)
-			return	new ResponseEntity<String>(ps, HttpStatus.OK);
+	  String message=productStockService.updateStock(productStock);
+	  if(message!=null)
+			return	new ResponseEntity<String>(message, HttpStatus.OK);
 		else
 		    throw new NotFoundOperation("Item Not Found");
    }

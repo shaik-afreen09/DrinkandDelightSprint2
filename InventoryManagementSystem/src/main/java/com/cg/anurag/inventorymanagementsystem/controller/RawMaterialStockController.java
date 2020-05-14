@@ -30,16 +30,23 @@ public class RawMaterialStockController {
 		{
 			this.rawMaterialStockService=rawMaterialStockService;
 		}
+		/*
+		 * 
+		 * Gets Raw Material Stock Order using HTTP POST Request and creates a record in Rawmaterialstock Table
+		 */
 		@PostMapping("rawmaterial/createrawmaterialorder")
 		   public ResponseEntity<RawMaterialStock> createOrder(@RequestBody RawMaterialStock rms) throws NotFoundException
 		   {
-			RawMaterialStock ps=rawMaterialStockService.createOrder(rms);
+			RawMaterialStock rawmaterialstock=rawMaterialStockService.createOrder(rms);
 			   
-			   if(ps!=null)
-					return	new ResponseEntity<RawMaterialStock>(ps, HttpStatus.OK);
+			   if(rawmaterialstock!=null)
+					return	new ResponseEntity<RawMaterialStock>(rawmaterialstock, HttpStatus.OK);
 				else
 				    throw new NotFoundOperation("Not Created");
 		   }
+		/*
+		 * Fetch Entire order using OrderID
+		 */
 	   @PostMapping("rawmaterial/getOrder")
 	   public ResponseEntity<RawMaterialStock> getOrder(@RequestBody RawMaterialStock rms) throws NotFoundException
 	   {
@@ -50,6 +57,9 @@ public class RawMaterialStockController {
 			    throw new NotFoundOperation("Not FOund");
 		   
 	   }
+	   /*
+	    * Fetchs All Orders in DB
+	    */
 	   @GetMapping("rawmaterial/getAll")
 	   public List<RawMaterialStock> getAll() throws NotFoundException
 	   {
@@ -57,6 +67,9 @@ public class RawMaterialStockController {
 		  
 		   
 	   }
+	   /*
+	    * Updates Process Date of Order by Taking Order Id and other inputs
+	    */
 	   @PutMapping(value="rawmaterial/updateProcessDate",consumes="application/json")
 	   public ResponseEntity<String> updateProcessDate(@RequestBody()RawMaterialStock rawMaterialStock )
 	   {
@@ -68,6 +81,9 @@ public class RawMaterialStockController {
 			else
 			    throw new NotFoundOperation("Item Not Found");
 	   }
+	   /*
+	    * Updates  Quality check, Manufacturing and Exit Date of Raw Material
+	    */
 	   @PutMapping(value="rawmaterial/updateStock",consumes="application/json")
 	   public ResponseEntity<String> updateStock(@RequestBody()RawMaterialStock rawMaterialStock)
 	   {

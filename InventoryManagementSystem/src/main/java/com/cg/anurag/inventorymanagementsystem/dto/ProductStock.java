@@ -30,8 +30,8 @@ public class ProductStock {
 	 int quantityUnit;
 	 @Column(name="price")
 	 double price;
-	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "w_id")
-	 @SequenceGenerator(name="w_id", sequenceName = "wid20", allocationSize=10)
+	 
+	 @SequenceGenerator(name="warehouseid", sequenceName = "wid20")
 	 @Column(name="warehouseid")
 	 String warehouseId;
 	 @Column(name="deliverydate")

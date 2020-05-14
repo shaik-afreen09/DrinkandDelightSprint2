@@ -25,6 +25,10 @@ public class AdminController {
 	{
 		this.adminservice=adminservice;
 	}
+	/*
+	 * It is login function where it takes admin object and eenables login functionality
+	 * 
+	 */
 	@PutMapping(value="admin/login",consumes="application/json")
 	   public ResponseEntity<String> adminlogin(@RequestBody()Admin admin)
 	   {
@@ -35,6 +39,10 @@ public class AdminController {
 		    throw new NotFoundOperation("Item Not Found");
 		 
 	   }
+	/*
+	 * 
+	 * Forgot Password Functionality with feature of validating whether user exist or not
+	 */
 	   @PutMapping(value="admin/forgot",consumes="application/json")
 	   public ResponseEntity<String> forgetpass(@RequestBody()Admin admin )
 	   {

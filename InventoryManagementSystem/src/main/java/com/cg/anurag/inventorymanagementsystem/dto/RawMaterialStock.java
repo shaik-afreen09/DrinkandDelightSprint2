@@ -28,7 +28,7 @@ public class RawMaterialStock {
 	 int quantityUnit;
 	 @Column(name="price")
 	 double price;
-	 @GeneratedValue(strategy = GenerationType.AUTO, generator = "warehouseid")
+	 @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "warehouseid")
 	 @SequenceGenerator(name="warehouseid", sequenceName = "wid1", allocationSize=10)
 	 @Column(name="warehouseid")
 	 String warehouseId;
