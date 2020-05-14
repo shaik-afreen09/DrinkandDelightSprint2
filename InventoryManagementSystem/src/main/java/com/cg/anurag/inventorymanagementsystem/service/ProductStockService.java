@@ -57,7 +57,7 @@ public class ProductStockService {
 		 {
 			 return null; 
 		 }
-		 
+		 productStock1.setDeliveryDate(productStock.getDeliveryDate());
 	    	  productStock1.setExitDate(productStock.getExitDate());
 	    	  return "Exit Date Modified";
 	    	
@@ -75,6 +75,7 @@ public class ProductStockService {
 		 {
 			 return null;
 		 }
+		
 			 productStock2.setManufacturingDate(productStock.getManufacturingDate());
 			 productStock2.setExpiryDate(productStock.getExpiryDate());
 			 productStock2.setQualityCheck(productStock.getQualityCheck());

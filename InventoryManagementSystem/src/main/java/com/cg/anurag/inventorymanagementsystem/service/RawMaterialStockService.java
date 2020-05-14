@@ -50,7 +50,7 @@ public class RawMaterialStockService {
 		 {
 			 return null; 
 		 }
-		
+		 rawMaterialStock1.setDeliveryDate(rawMaterialStock.getDeliveryDate());
 	    	  rawMaterialStock1.setProcessDate(rawMaterialStock.getProcessDate());
 	    	  return "Process Date Modified";
 	    	
@@ -68,7 +68,8 @@ public class RawMaterialStockService {
 		{
 			return null;
 		}
-		
+		System.out.print(rawMaterialStock.getDeliveryDate());
+	
 	    	  rawMaterialStock1.setManufacturingDate(rawMaterialStock.getManufacturingDate());
 	    	  rawMaterialStock1.setExpiryDate(rawMaterialStock.getExpiryDate());
 	    	  rawMaterialStock1.setQualityCheck(rawMaterialStock.getQualityCheck());
